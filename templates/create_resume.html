@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+    function addExperienceField() {
+        let container = document.getElementById("experience");
+        let div = document.createElement("div");
+        div.classList.add("entry");
+
+        div.innerHTML = `
+            <input type="text" placeholder="Job Role" name="experience_role[]" required>
+            <input type="text" placeholder="Year (Start - End or Present)" name="experience_year[]" required>
+            <textarea placeholder="Description (Responsibilities, Achievements)" name="experience_description[]" required></textarea>
+            <button type="button" onclick="this.parentElement.remove()">❌ Remove</button>
+        `;
+
+        container.appendChild(div);
+    }
+
+    function addEducationField() {
+        let container = document.getElementById("education");
+        let div = document.createElement("div");
+        div.classList.add("entry");
+
+        div.innerHTML = `
+            <input type="text" placeholder="Degree (e.g., B.Tech, M.Sc.)" name="education_degree[]" required>
+            <input type="text" placeholder="Institute Name" name="education_institute[]" required>
+            <input type="text" placeholder="Year (Start - End)" name="education_year[]" required>
+            <input type="text" placeholder="Marks/CGPA" name="education_marks[]" required>
+            <button type="button" onclick="this.parentElement.remove()">❌ Remove</button>
+        `;
+
+        container.appendChild(div);
+    }
+
+    function addProjectField() {
+        let container = document.getElementById("projects");
+        let div = document.createElement("div");
+        div.classList.add("entry");
+
+        div.innerHTML = `
+            <input type="text" placeholder="Project Name" name="project_name[]" required>
+            <textarea placeholder="Project Description" name="project_description[]" required></textarea>
+            <button type="button" onclick="this.parentElement.remove()">❌ Remove</button>
+        `;
+
+        container.appendChild(div);
+    }
+
+    function prepareFormData() {
+        let experiences = [];
+        document.querySelectorAll("#experience .entry").forEach((div) => {
+            experiences.push({
+                job_role: div.children[0].value,
+                year: div.children[1].value,
+                description: div.children[2].value
+            });
+        });
+
+        let education = [];
+        document.querySelectorAll("#education .entry").forEach((div) => {
+            education.push({
+                degree: div.children[0].value,
+                institute: div.children[1].value,
+                year: div.children[2].value,
+                marks: div.children[3].value
+            });
+        });
+
+        let projects = [];
+        document.querySelectorAll("#projects .entry").forEach((div) => {
+            projects.push({
+                name: div.children[0].value,
+                description: div.children[1].value
+            });
+        });
+
+
+
+        document.getElementById("experience_input").value = JSON.stringify(experiences);
+        document.getElementById("education_input").value = JSON.stringify(education);
+        document.getElementById("projects_input").value = JSON.stringify(projects);
+    }
+    </script>
+
+
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Resume Management</h2>
+        <nav>
+            <div class="section">
+                <a href="{{ url_for('index') }}"> 🏠 Home</a>
+                <a href="{{ url_for('create_resume') }}">📝 Create Resume</a>
+                <a href="{{ url_for('saved_resumes') }}">📂 Saved Resumes</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Create Your Resume</h1>
+        <form action="{{ url_for('save_resume') }}" method="post" onsubmit="prepareFormData()">
+            
+            <!-- Personal Details -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" placeholder="+91 9876543210" required>
+
+            <label for="linkedin">LinkedIn:</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/your-profile">
+
+            <label for="github">GitHub:</label>
+            <input type="url" id="github" name="github" placeholder="https://github.com/your-username">
+
+            <!-- Summary -->
+            <label for="summary">Summary</label>
+            <textarea id="summary" name="summary" rows="3" placeholder="Briefly describe about yourself"  required></textarea>
+
+            <!-- Skills -->
+            <label for="skills">Skills (comma-separated):</label>
+            <input type="text" id="skills" name="skills"  placeholder="eg.Python, Java, AWS, Docker" required 
+                oninput="this.value = this.value.replace(/\s*,\s*/g, ', ');">
+
+            <!-- Work Experience -->
+            <label for="experience">Work Experience:</label>
+            <div id="experience"></div>
+            <button type="button" onclick="addExperienceField()">➕ Add Experience</button>
+            <input type="hidden" name="experience" id="experience_input">
+
+            <!-- Education -->
+            <label for="education">Education:</label>
+            <div id="education"></div>
+            <button type="button" onclick="addEducationField()">➕ Add Education</button>
+            <input type="hidden" name="education" id="education_input">
+
+            <!-- Projects Section -->
+            <label for="projects">Projects:</label>
+            <div id="projects"></div>
+            <button type="button" onclick="addProjectField()">➕ Add Project</button>
+            <input type="hidden" name="projects" id="projects_input">
+
+
+            <!-- Certifications (Optional) -->
+            <label for="skills">Certifications (comma-separated):</label>
+            <input type="text" id="certifications" name="certifications"  placeholder="eg.AWS Certified Solutions Architect" required 
+                oninput="this.value = this.value.replace(/\s*,\s*/g, ', ');">
+            <button type="submit">Save Resume</button>
+        </form>
+    </div>
+
+</body>
+</html>

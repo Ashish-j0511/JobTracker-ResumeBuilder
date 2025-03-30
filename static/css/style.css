@@ -1,0 +1,582 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #F4F7FC; /* Soft Off-White */
+    color: #333333; /* Dark Grey */
+    display: flex;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #1B2A41; /* Elegant Navy */
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto; /* Allows scrolling if sidebar content grows */
+}
+
+.sidebar h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar nav {
+    margin-top: 20px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background: #324A5F; /* Refined Slate Blue */
+    transition: background 0.3s ease;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+    background: #1976D2; /* Professional Deep Blue */
+}
+
+/* Add Job Page Content */
+.addjob-content {
+    margin-left: 270px; /* Space for sidebar */
+    width: calc(100% - 270px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+.addjob-content h2 {
+    font-size: 35px;
+    margin-bottom: 25px;
+    color: #1B2A41; /* Elegant Navy */
+}
+
+/* Form Styling */
+form {
+    width: 100%;
+    max-width: 700px; /* Set max width for consistent form width */
+}
+
+/* Make input fields uniform */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    font-size: 16px;
+}
+
+/* Adjust textarea height */
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Button Styling */
+form button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #1976D2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background: #145a9d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .addjob-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .addjob-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+
+
+
+/* Job List Content */
+.joblist-content {
+    margin-left: 270px; /* Space for sidebar */
+    width: calc(100% - 270px);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+.joblist-content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #1B2A41; /* Elegant Navy */
+    text-align: center;
+}
+
+/* Job List */
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centers cards */
+}
+
+/* Job Card Styling */
+.job-card {
+    width: 320px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 6px solid transparent; /* Adds a left accent */
+    background: white;
+}
+
+/* Hover Effect */
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Job Card Header */
+.job-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Job Title */
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Status Badge */
+.status {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 12px;
+    text-transform: capitalize;
+}
+
+/* Status Colors */
+.applied {
+    background: #e3f2fd; /* Light Blue */
+    color: #1E88E5;
+    border-left-color: #1E88E5;
+}
+
+.interview {
+    background: #fff3e0; /* Light Orange */
+    color: #F57C00;
+    border-left-color: #F57C00;
+}
+
+.offer {
+    background: #e8f5e9; /* Light Green */
+    color: #43A047;
+    border-left-color: #43A047;
+}
+
+.rejected {
+    background: #ffebee; /* Light Red */
+    color: #E53935;
+    border-left-color: #E53935;
+}
+
+/* Job Details */
+.job-details p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Action Buttons */
+.actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-btn, .delete-btn {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.edit-btn {
+    background: #1976D2;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #145a9d;
+}
+
+.delete-btn {
+    background: #E53935;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+}
+
+/* No Jobs Message */
+.no-jobs {
+    text-align: center;
+    font-size: 18px;
+    padding: 40px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-container {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .job-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Home Page Content */
+.main-content {
+    margin-left: 270px; /* Space for sidebar */
+    width: calc(100% - 270px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center; /* Centers text */
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+.main-content h1 {
+    font-size: 32px;
+    color: #1B2A41; /* Elegant Navy */
+    margin-bottom: 10px;
+}
+
+/* Description Text */
+.main-content p {
+    font-size: 18px;
+    color: #555;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+/* Edit Job Page Content - Matches Add Job */
+.editjob-content {
+    margin-left: 270px; /* Space for sidebar */
+    width: calc(100% - 270px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Headings */
+.editjob-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #1B2A41; /* Elegant Navy */
+}
+
+/* Form Styling */
+/* Ensure all form elements (inputs, select, textarea, button) have the same width & padding */
+form input,
+form textarea,
+form button,
+form select {
+    width: 100% !important; /* Ensures all elements take full width */
+    padding: 10px; /* Same padding for all */
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    box-sizing: border-box; /* Ensures padding doesn’t affect width */
+}
+/* Style the dropdown to match input fields */
+form select {
+    width: 100% !important;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none; /* Removes default browser styling */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"><path d="M7 10l5 5 5-5H7z"/></svg>'); 
+    background-repeat: no-repeat;
+    background-position: right 12px center; /* Position arrow inside */
+    background-size: 16px;
+    padding-right: 35px; /* Space for the arrow */
+}
+
+/* Add hover effect */
+form select:hover {
+    border-color: #1976D2;
+}
+
+form select {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Add hover effect */
+form select:hover {
+    border-color: #1976D2;
+}
+
+
+/* Adjust textarea height separately */
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Ensure select (dropdown) matches styling */
+form select {
+    appearance: none; /* Removes default dropdown styling */
+    cursor: pointer;
+}
+
+/* Ensure button matches input field dimensions */
+form button {
+    background: #1976D2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #145a9d;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .editjob-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .editjob-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+
+
+/* Resume Card */
+.resume-card {
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    
+}
+
+
+
+/* Resume Header */
+.resume-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.resume-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contact-info {
+    font-size: 14px;
+    color: #666;
+    border-bottom: 2px solid #333;
+}
+
+/* Resume Body */
+.resume-body {
+    padding: 10px 0;
+}
+
+.resume-section {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.resume-section h3 {
+    font-size: 18px;
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* Bullet List */
+.bullet-list {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Download Button */
+.resume-footer {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.download-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #218838;
+}
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.flash {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.flash.success { background: green; color: white; }
+.flash.danger { background: red; color: white; }
+.flash.warning { background: orange; color: white; }
+.flash.info { background: blue; color: white; }
+
+
+
