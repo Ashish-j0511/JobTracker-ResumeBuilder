@@ -7,7 +7,7 @@ A simple and efficient Job Tracking and Resume Managing tool built with Shell Sc
 - **Simple & Efficient** – Easy-to-use interface for seamless job and resume management.  
 - **Automated Setup** – Shell scripts automate environment setup and dependencies (Linux only).   
 
-## Sreenshots :
+## 📸 Screenshots :
 1.Index Page:
 ![image alt](https://github.com/Ashish-j0511/JobTracker-ResumeBuilder/blob/a14f2a070c03cb43e7418152e863b00565a12a30/index.png)
 
