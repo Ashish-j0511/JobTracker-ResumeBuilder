@@ -1,10 +1,10 @@
 # JobTracker-ResumeBuilder
 A simple and efficient Job Tracking and Resume Managing tool built with Shell Scripting, Python, HTML, CSS and Flask.
-## Features
-- You can Add and track your job applications
-- Easy To Use 
-- It helps you with Creating and Downloading your resumes     
-- It has a Automated shell scripts for downloadind the required python package and creating the environment for project
+## Features  
+- **Track Job Applications**: Easily add, manage, and monitor your job applications.  
+- **User-Friendly Interface**: Simple and intuitive design for seamless navigation.  
+- **Resume Management**: Create, store, and download resumes in PDF format.  
+- **Automated Setup**: Shell scripts handle environment setup and dependency installation (Linux only).  
 
 ## Sreenshots :
 1.Index Page:
